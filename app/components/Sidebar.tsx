@@ -3,17 +3,16 @@
 import {InnerSideBox,MainSideBox } from './sidebarStyles'
 import {Email, Phone, Drafts,NightlightRound} from '@mui/icons-material'
 import Switch from '@mui/material/Switch';
-import { useContext } from 'react';
-import { myContext } from '../page';
 import { SidebarWrapper } from '../stylesheets';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../store/themeSlice';
 
 const SideBar = () => {
 
-    const context = useContext(myContext)
+    const state = useSelector((state: any)=>state.theme)
+    console.log('state',state)
+    const dispatch = useDispatch()
 
-    if(!context) return null
-
-    const {themeMode,toggleTheme} = context
 
     const elements = [
         {
@@ -46,7 +45,7 @@ const SideBar = () => {
           }
             <InnerSideBox>
                 <NightlightRound/>
-                <Switch checked={themeMode} onChange={toggleTheme}/>
+                <Switch checked={state} onChange={()=>dispatch(toggleTheme())}/>
             </InnerSideBox>
         </MainSideBox>
         </SidebarWrapper>
