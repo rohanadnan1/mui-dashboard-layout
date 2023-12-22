@@ -24,7 +24,6 @@ const Dashboard = () => {
     <WbTwilight />,
     <YouTube />,
   ];
-  const iterations = [1, 2, 3, 4];
 
   return (
     <DashboardWrapper>
